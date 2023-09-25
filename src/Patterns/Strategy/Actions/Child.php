@@ -10,6 +10,6 @@ class Child implements TestInterface
 {
     public function execute(): string
     {
-        return 'child 1';
+        return 'child 1' . PHP_EOL;
     }
 }
