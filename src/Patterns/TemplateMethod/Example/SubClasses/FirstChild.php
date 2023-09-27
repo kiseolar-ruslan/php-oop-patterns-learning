@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Patterns\TemplateMethod\SubClasses;
+namespace App\Patterns\TemplateMethod\Example\SubClasses;
 
-use App\Patterns\TemplateMethod\AbstractClass;
+use App\Patterns\TemplateMethod\Example\Game;
 
-class FirstChild extends AbstractClass
+class FirstChild extends Game
 {
     protected function buildStructures(): string
     {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Patterns\TemplateMethod;
+namespace App\Patterns\TemplateMethod\Example;
 
-abstract class AbstractClass
+abstract class Game
 {
     public function __construct(
         protected string $position,
