@@ -8,7 +8,6 @@ use App\Patterns\TemplateMethod\Example1\SubClasses\Twitter;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-
 //function app(SocialNetwork $class, $message): void
 //{
 //    $class->post($message);
