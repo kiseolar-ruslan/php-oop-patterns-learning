@@ -9,7 +9,8 @@ use Exception;
 
 class Cache implements CacheInterface
 {
-    protected const SAVE_DIR = __DIR__ . '/Storage';
+    protected const SAVE_DIR           = __DIR__ . '/Storage';
+    protected const EXPIRES_BY_DEFAULT = 365 * 24 * 60 * 60;
 
     /**
      * @throws Exception
@@ -34,7 +35,7 @@ class Cache implements CacheInterface
     /**
      * @throws Exception
      */
-    public function set(string $fileName, array $value, int|float $expires = 365 * 24 * 60 * 60): static
+    public function set(string $fileName, array $value, int|float $expires = self::EXPIRES_BY_DEFAULT): static
     {
         $value['expires'] = time() + $expires;
 
