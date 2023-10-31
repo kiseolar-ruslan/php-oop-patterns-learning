@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace App\Products;
 
+use PDO;
+
 class ShopProduct
 {
+    public const AVAILABLE    = 0;
+    public const OUT_OF_STOCK = 1;
+
     protected int|float $discount = 0;
 
     public function __construct(
