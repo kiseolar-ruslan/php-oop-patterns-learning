@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 use App\Products\ShopProduct;
+use App\Products\ShopProductWriter;
+use App\Products\TextProductWriter;
+use App\Products\XmlProductWriter;
 use App\Сhapter4\StaticExample;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -16,7 +19,11 @@ $shopProduct = new ShopProduct(
     'title',
     'Rus',
     'Krietsu',
-    1
+    100
 );
-echo $shopProduct::OUT_OF_STOCK . PHP_EOL;
 
+$textWriter = new TextProductWriter($shopProduct);
+$textWriter->write();
+
+
+exit;

@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace App\Products;
 
+use App\Products\Interfaces\Chargeable;
 use PDO;
 
-class ShopProduct
+class ShopProduct implements Chargeable
 {
     public const AVAILABLE    = 0;
     public const OUT_OF_STOCK = 1;
 
     protected int|float $discount = 0;
+    protected int $taxRate = 20;
 
     public function __construct(
         protected string    $title,
@@ -21,6 +23,11 @@ class ShopProduct
     ) {
     }
 
+    public function calculateTax(float|int $price): float|int
+    {
+        return (($this->taxRate / 100) * $price);
+    }
+    
     public function getSummaryLine(): string
     {
         return "$this->title ({$this->getProducer()})";
@@ -45,5 +52,10 @@ class ShopProduct
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function cdInfo(CDProduct $cdProduct): int
+    {
+        return $cdProduct->getPlayLength();
     }
 }

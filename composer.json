@@ -6,6 +6,7 @@
   },
   "require": {
     "ext-readline": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-xmlwriter": "*"
   }
 }

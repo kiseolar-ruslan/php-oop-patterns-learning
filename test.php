@@ -12,8 +12,8 @@ $array = [
     'e' => 'five',
     'j' => 'six',
 ];
-$key    = 'asd';
-$result = $a[$key] ?? 'none';
+$key    = 'j';
+$result = $array[$key] ?? 'none';
+echo $result . PHP_EOL;
 
-echo 1337 . PHP_EOL;
 
