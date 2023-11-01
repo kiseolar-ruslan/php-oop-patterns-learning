@@ -14,4 +14,5 @@ class UtilityService extends Service
     {
         return (($this->taxRate / 100) * $price);
     }
+
 }
