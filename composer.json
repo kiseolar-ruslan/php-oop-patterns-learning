@@ -9,6 +9,7 @@
     "ext-readline": "*",
     "ext-pdo": "*",
     "ext-xmlwriter": "*",
-    "symfony/var-dumper": "*"
+    "symfony/var-dumper": "*",
+    "nikic/fast-route": "^1.3"
   }
 }
