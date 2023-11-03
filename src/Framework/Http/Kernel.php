@@ -13,13 +13,23 @@ class Kernel
     public function handle(Request $request): Response
     {
         $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) {
-            $routeCollector->addRoute('GET', '/', function () {
-                $content = "<h1>Hello</h1>";
+            $routes = require_once BASE_PATH . '/../src/Framework/Routes/web.php';
 
-                return new Response($content);
-            });
+            foreach ($routes as $route) {
+                $routeCollector->addRoute(...$route);
+            };
         });
 
-        $routeInfo = $dispatcher->dispatch();
+        $routeInfo = $dispatcher->dispatch(
+            $request->getMethod(),
+            $request->getPathInfo()
+        );
+
+        //Destructurization
+        [$status, [$controller, $method], $vars] = $routeInfo;
+
+        $response = call_user_func_array([new $controller(), $method], $vars);
+
+        return $response;
     }
 }

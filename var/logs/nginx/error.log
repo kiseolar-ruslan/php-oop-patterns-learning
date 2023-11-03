@@ -66,3 +66,15 @@
 2023/11/02 15:23:24 [notice] 1#1: signal 17 (SIGCHLD) received from 29
 2023/11/02 15:23:24 [notice] 1#1: worker process 29 exited with code 0
 2023/11/02 15:23:24 [notice] 1#1: exit
+2023/11/03 13:17:48 [notice] 1#1: using the "epoll" event method
+2023/11/03 13:17:48 [notice] 1#1: nginx/1.25.2
+2023/11/03 13:17:48 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2023/11/03 13:17:48 [notice] 1#1: OS: Linux 6.3.13-linuxkit
+2023/11/03 13:17:48 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/03 13:17:48 [notice] 1#1: start worker processes
+2023/11/03 13:17:48 [notice] 1#1: start worker process 28
+2023/11/03 13:17:48 [notice] 1#1: start worker process 29
+2023/11/03 13:17:48 [notice] 1#1: start worker process 30
+2023/11/03 13:17:48 [notice] 1#1: start worker process 31
+2023/11/03 13:46:02 [error] 30#30: *17 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 192.168.65.1, server: , request: "GET / HTTP/1.1", upstream: "fastcgi://172.19.0.3:9000", host: "localhost"
+2023/11/03 15:08:10 [error] 29#29: *93 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 192.168.65.1, server: , request: "GET / HTTP/1.1", upstream: "fastcgi://172.19.0.3:9000", host: "localhost"
