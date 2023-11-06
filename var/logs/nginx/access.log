@@ -355,3 +355,7 @@
 192.168.65.1 - - [03/Nov/2023:16:46:55 +0000] "GET /favicon.ico HTTP/1.1" 200 617 "http://localhost/posts/12345" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
 192.168.65.1 - - [03/Nov/2023:17:08:12 +0000] "GET / HTTP/1.1" 200 34 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
 192.168.65.1 - - [03/Nov/2023:17:08:12 +0000] "GET /favicon.ico HTTP/1.1" 200 617 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+192.168.65.1 - - [03/Nov/2023:17:21:48 +0000] "GET / HTTP/1.1" 200 34 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+192.168.65.1 - - [03/Nov/2023:17:21:48 +0000] "GET /favicon.ico HTTP/1.1" 200 617 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+192.168.65.1 - - [06/Nov/2023:16:17:22 +0000] "GET / HTTP/1.1" 200 34 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+192.168.65.1 - - [06/Nov/2023:16:17:23 +0000] "GET /favicon.ico HTTP/1.1" 200 617 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
