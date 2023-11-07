@@ -12,13 +12,28 @@ require_once __DIR__ . '/vendor/autoload.php';
 //    'e' => 'five',
 //    'j' => 'six',
 //];
-//$key    = 'j';
-//$result = $array[$key] ?? 'none';
-//echo $result . PHP_EOL;
 
-$text = '123,456,789';
 
-$a = strtok($text, ',');
+/**
+ * Class Profile
+ */
+class Profile
+{
+    /**
+     * @return string
+     */
+    private function getUserName(): string
+    {
+        return 'Foo';
+    }
+}
+
+$profileObj = new Profile();
+$refMethod  = new ReflectionMethod($profileObj, 'getUserName');
+if (true === $refMethod->isPrivate()) {
+    $refMethod->setAccessible(true);
+}
+echo $refMethod->invoke($profileObj);
 
 exit;
 

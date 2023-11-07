@@ -6,14 +6,9 @@ use App\Products\ShopProduct;
 use App\Products\ShopProductWriter;
 use App\Products\TextProductWriter;
 use App\Products\XmlProductWriter;
-use App\Сhapter4\StaticExample;
+use App\ChapterFour\StaticExample;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-
-$staticObj = new StaticExample();
-
-//echo StaticExample::sayHello() . PHP_EOL;
-//echo StaticExample::$aNum . PHP_EOL;
 
 $shopProduct = new ShopProduct(
     'title',
@@ -22,8 +17,7 @@ $shopProduct = new ShopProduct(
     100
 );
 
-$textWriter = new TextProductWriter($shopProduct);
-$textWriter->write();
-
+$userObj = \App\ChapterFour\User::create();
+var_dump($userObj);
 
 exit;

@@ -6,6 +6,7 @@ use App\Products\BookProduct;
 use App\Products\CDProduct;
 use App\Products\ShopProduct;
 use App\Products\ShopProductWriter;
+use App\Products\UtilityService;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -16,8 +17,6 @@ $product = new ShopProduct(
     5.99,
 );
 
-//echo $product->getSummaryLine();
-
 $cdProductObj = new CDProduct(
     'CD',
     'Ruslan',
@@ -27,9 +26,6 @@ $cdProductObj = new CDProduct(
     60,
 );
 
-//echo $cdProductObj->getSummaryLine() . PHP_EOL;
-//echo $cdProductObj->getSummaryLine();
-
 $bookProductObj = new BookProduct(
     'Book',
     'Ruslan',
@@ -37,10 +33,9 @@ $bookProductObj = new BookProduct(
     1,
     2,
 );
-//
-//echo $bookProductObj->getSummaryLine() . PHP_EOL;
 
-$writer = new ShopProductWriter();
-//var_dump($writer->setProducts($bookProductObj)->write());
+$utilityService = new UtilityService(100);
 
-echo $cdProductObj->setDiscount(5)->getPrice();
+
+echo $utilityService->getFinalPrice();
+

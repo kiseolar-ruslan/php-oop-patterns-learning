@@ -5,15 +5,20 @@ declare(strict_types=1);
 namespace App\Products;
 
 use App\Products\Interfaces\Chargeable;
+use App\Products\Traits\PriceUtilities;
 use PDO;
 
 class ShopProduct implements Chargeable
 {
+    use PriceUtilities {
+        PriceUtilities::calculateTax as private;
+    }
+
     public const AVAILABLE    = 0;
     public const OUT_OF_STOCK = 1;
 
     protected int|float $discount = 0;
-    protected int $taxRate = 20;
+    protected int|float $taxRate = 20;
 
     public function __construct(
         protected string    $title,
@@ -23,11 +28,6 @@ class ShopProduct implements Chargeable
     ) {
     }
 
-    public function calculateTax(float|int $price): float|int
-    {
-        return (($this->taxRate / 100) * $price);
-    }
-    
     public function getSummaryLine(): string
     {
         return "$this->title ({$this->getProducer()})";
@@ -57,5 +57,10 @@ class ShopProduct implements Chargeable
     public function cdInfo(CDProduct $cdProduct): int
     {
         return $cdProduct->getPlayLength();
+    }
+
+    public function getTaxRate(): float|int
+    {
+        return $this->taxRate;
     }
 }
