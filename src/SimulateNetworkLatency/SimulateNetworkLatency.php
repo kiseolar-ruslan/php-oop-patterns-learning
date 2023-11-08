@@ -9,17 +9,11 @@ namespace App\SimulateNetworkLatency;
  */
 class SimulateNetworkLatency
 {
-
-    public function __construct(protected int $time)
-    {
-        $this->simulateLatency();
-    }
-
-    public function simulateLatency(): void
+    public static function simulateLatency(int $time): void
     {
         $i = 0;
 
-        while ($i < $this->time) {
+        while ($i < $time) {
             echo '.';
             sleep(1);
             $i++;

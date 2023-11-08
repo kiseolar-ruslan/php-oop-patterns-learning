@@ -14,26 +14,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 //];
 
 
-/**
- * Class Profile
- */
-class Profile
-{
-    /**
-     * @return string
-     */
-    private function getUserName(): string
-    {
-        return 'Foo';
-    }
-}
-
-$profileObj = new Profile();
-$refMethod  = new ReflectionMethod($profileObj, 'getUserName');
-if (true === $refMethod->isPrivate()) {
-    $refMethod->setAccessible(true);
-}
-echo $refMethod->invoke($profileObj);
 
 exit;
 
