@@ -2,13 +2,9 @@
 
 declare(strict_types=1);
 
-use App\ChapterFour\SpreadSheet;
-use App\ChapterFour\User;
+use App\ChapterFour\MagicMethods\Person;
+use App\ChapterFour\MagicMethods\PersonWriter;
 use App\Products\ShopProduct;
-use App\Products\ShopProductWriter;
-use App\Products\TextProductWriter;
-use App\Products\XmlProductWriter;
-use App\ChapterFour\StaticExample;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -19,9 +15,8 @@ $shopProduct = new ShopProduct(
     100
 );
 
-$filePath   = 'test.xml';
-$a          = file_get_contents($filePath);
-$xmlHandler = new \App\ChapterFour\XMLHandler($filePath);
-$host       = $xmlHandler->get('host');
+
+$person = new Person('Ruslan', 22, new PersonWriter());
+print_r($person . PHP_EOL);
 
 exit;

@@ -8,11 +8,13 @@ use Exception;
 
 class Person
 {
-    protected ?string $userName = null;
-    protected ?int    $userAge  = null;
+    protected ?int $id = null;
 
-    public function __construct(protected PersonWriter $personWriter)
-    {
+    public function __construct(
+        protected ?string      $userName,
+        protected ?int         $userAge,
+        protected PersonWriter $personWriter
+    ) {
     }
 
     /**
@@ -67,18 +69,32 @@ class Person
         }
     }
 
-    public function setName(?string $name): void
+    public function setName(?string $name): static
     {
         $this->userName = $name;
 
         if (false === is_null($name)) {
             $this->userName = ucfirst($this->userName);
         }
+
+        return $this;
     }
 
-    public function setAge(?int $age): void
+    public function setAge(?int $age): static
     {
         $this->userAge = $age;
+        return $this;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function __unset(string $name): void
@@ -90,11 +106,33 @@ class Person
         }
     }
 
+    public function __clone(): void
+    {
+        $this->id       = 0;
+        $this->userName = null;
+        $this->userAge  = 0;
+    }
+
+    public function __toString(): string
+    {
+        $string = $this->userName;
+        $string .= " (Age: $this->userAge)";
+
+        return $string;
+    }
+
     protected function methodNameCreator(string $name, string $prefix = 'set'): string
     {
         $capitalLetter = ucfirst($name);
         $methodName    = 'set' === $prefix ? $prefix . $capitalLetter : 'get' . $capitalLetter;
 
         return $methodName;
+    }
+
+    public function __destruct()
+    {
+        $result = empty($this->id) ? 'User was not saved' : 'Saved success';
+
+        echo $result . PHP_EOL;
     }
 }

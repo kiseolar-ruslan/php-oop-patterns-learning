@@ -32,7 +32,7 @@ class Address
     public function __set(string $name, mixed $value): void
     {
         if ('streetAddress' === $name) {
-            if (0 === preg_match("/^(\d+.*?)[\s,]+(.+)$/", $value, $matches)) {
+            if (false === (bool)preg_match("/^(\d+.*?)[\s,]+(.+)$/", $value, $matches)) {
                 throw new Exception("Address analysis error: '$value'");
             }
 
@@ -50,6 +50,7 @@ class Address
             throw new Exception("The $name doesn't match 'streetAddress'");
         }
 
-        return $this->number . ' ' . $this->street . PHP_EOL;
+        return 'Street number: ' . $this->number . PHP_EOL .
+            'Street name: ' . $this->street . PHP_EOL;
     }
 }
