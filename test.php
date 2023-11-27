@@ -3,8 +3,7 @@
 declare(strict_types=1);
 
 
-use App\ChapterFour\MagicMethods\Person;
-use App\ChapterFour\MagicMethods\PersonWriter;
+use App\Products\CDProduct;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
