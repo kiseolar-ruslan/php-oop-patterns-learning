@@ -131,7 +131,7 @@ class Person
 
     public function __destruct()
     {
-        $result = empty($this->id) ? 'User was not saved' : 'Saved success';
+        $result = empty($this->id) ? "User $this->userName was not saved" : 'Saved success';
 
         echo $result . PHP_EOL;
     }

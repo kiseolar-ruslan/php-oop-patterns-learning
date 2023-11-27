@@ -11,6 +11,7 @@ class Cache implements CacheInterface
 {
     protected const SAVE_DIR           = __DIR__ . '/Storage';
     protected const EXPIRES_BY_DEFAULT = 365 * 24 * 60 * 60;
+    protected const EXPIRES = 'expires';
 
     /**
      * @throws Exception
@@ -37,7 +38,7 @@ class Cache implements CacheInterface
      */
     public function set(string $fileName, array $value, int|float $expires = self::EXPIRES_BY_DEFAULT): static
     {
-        $value['expires'] = time() + $expires;
+        $value[self::EXPIRES] = time() + $expires;
 
         if (false === file_put_contents($this->filePath($fileName), json_encode($value))) {
             throw new Exception('Failed to write data');
