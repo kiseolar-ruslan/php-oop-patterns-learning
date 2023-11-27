@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\ChapterFour\Reflection;
 
 use ReflectionClass;
+use ReflectionMethod;
 
 class ClassInfo
 {
@@ -22,6 +23,25 @@ class ClassInfo
             : "$name - may not be instantiable";
         $details .= $class->isCloneable() ? "$name - may be cloneable" . PHP_EOL
             : "may not be cloneable";
+
+        return $details;
+    }
+
+    public static function methodData(ReflectionMethod $method): string
+    {
+        $details = '';
+
+        $name    = $method->getName();
+        $details .= $method->isUserDefined() ? "$name - is user defined" . PHP_EOL : '';
+        $details .= $method->isInternal() ? "$name - is a internal method" . PHP_EOL : '';
+        $details .= $method->isAbstract() ? "$name - is a abstract method" . PHP_EOL : '';
+        $details .= $method->isPublic() ? "$name - is a public method" . PHP_EOL : '';
+        $details .= $method->isProtected() ? "$name - is a protected method" . PHP_EOL : '';
+        $details .= $method->isPrivate() ? "$name - is a private method" . PHP_EOL : '';
+        $details .= $method->isStatic() ? "$name- is a static method" . PHP_EOL : '';
+        $details .= $method->isFinal() ? "$name - is a final method" . PHP_EOL : '';
+        $details .= $method->isConstructor() ? "$name - constructor" . PHP_EOL : '';
+        $details .= $method->returnsReference() ? "$name - returns reference(not value)" . PHP_EOL : '';
 
         return $details;
     }

@@ -8,8 +8,14 @@ use App\Products\CDProduct;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-
 $reflectionCDProduct = new ReflectionClass(CDProduct::class);
-echo ReflectionUtil::getClassSource($reflectionCDProduct);
+$methods = $reflectionCDProduct->getMethods();
+//echo ReflectionUtil::getMethodSource($methods);
+
+foreach ($methods as $method) {
+    echo ClassInfo::methodData($method);
+    echo PHP_EOL . '------------' . PHP_EOL;
+}
+
 
 exit;
