@@ -6,12 +6,14 @@ namespace App\ChapterFour\Reflection;
 
 use ReflectionClass;
 use ReflectionMethod;
+use ReflectionParameter;
+use ReflectionUnionType;
 
 class ClassInfo
 {
     public static function getData(ReflectionClass $class): string
     {
-        $details = '';
+        $details = "";
 
         $name    = $class->getName();
         $details .= $class->isUserDefined() ? "$name - is user defined" . PHP_EOL : '';
@@ -29,7 +31,7 @@ class ClassInfo
 
     public static function methodData(ReflectionMethod $method): string
     {
-        $details = '';
+        $details = "";
 
         $name    = $method->getName();
         $details .= $method->isUserDefined() ? "$name - is user defined" . PHP_EOL : '';
@@ -42,6 +44,48 @@ class ClassInfo
         $details .= $method->isFinal() ? "$name - is a final method" . PHP_EOL : '';
         $details .= $method->isConstructor() ? "$name - constructor" . PHP_EOL : '';
         $details .= $method->returnsReference() ? "$name - returns reference(not value)" . PHP_EOL : '';
+
+        return $details;
+    }
+
+    public static function paramData(ReflectionParameter $parameter): string
+    {
+        $details        = "";
+        $declaringClass = $parameter->getDeclaringClass();
+        $name           = $parameter->getName();
+        $position       = $parameter->getPosition();
+        $details        .= "$name have position $position" . PHP_EOL;
+
+        if (true === $parameter->hasType()) {
+            $type      = $parameter->getType();
+            $typeNames = [];
+
+            if (false === $type instanceof ReflectionUnionType) {
+                $typeNames[] = $type->getName();
+            }
+
+//            $types = $type->getTypes();
+//
+//            foreach ($types as $type) {
+//                $typeNames[] = $type->getName();
+//            }
+
+            $typeName = implode("|", $typeNames);
+            $details  .= "$name have type $typeName" . PHP_EOL;
+        }
+
+        if (true === $parameter->isPassedByReference()) {
+            $details .= "$name is passed by reference" . PHP_EOL;
+        }
+
+        if (true === $parameter->isDefaultValueAvailable()) {
+            $defaultValue = $parameter->getDefaultValue();
+            $details      .= "$name has a default value $defaultValue" . PHP_EOL;
+        }
+
+        if (true === $parameter->allowsNull()) {
+            $details .= "$name can be null" . PHP_EOL;
+        }
 
         return $details;
     }
